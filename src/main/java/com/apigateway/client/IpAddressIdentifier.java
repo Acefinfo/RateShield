@@ -1,6 +1,6 @@
 package com.apigateway.client;
 
-import com.sun.net.httpserver.HttpsExchange;
+import com.sun.net.httpserver.HttpExchange;
 
 
 /**
@@ -15,7 +15,7 @@ import com.sun.net.httpserver.HttpsExchange;
 public class IpAddressIdentifier implements ClientIdentifier {
 	
 	@Override
-	public String identify(HttpsExchange exchange) {
+	public String identify(HttpExchange exchange) {
 		// getRemoteAddress() returns InetSocketAddress
 		// getAddress().getHostAddress() gives us just "192.168.1.42"
 		return exchange.getRemoteAddress().getAddress().getHostAddress();

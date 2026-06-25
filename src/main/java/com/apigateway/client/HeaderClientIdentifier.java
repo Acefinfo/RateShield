@@ -1,6 +1,6 @@
 package com.apigateway.client;
 
-import com.sun.net.httpserver.HttpsExchange;
+import com.sun.net.httpserver.HttpExchange;
 
 
 /**
@@ -24,7 +24,7 @@ public class HeaderClientIdentifier implements ClientIdentifier {
 
 	
 	@Override
-	public String identify(HttpsExchange exchange) {
+	public String identify(HttpExchange exchange) {
 		
 		// HttpExchange headers are case-insensitive in lookup
 		String clientId = exchange.getRequestHeaders().getFirst(headerName);

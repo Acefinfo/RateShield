@@ -1,6 +1,6 @@
 package com.apigateway.client;
 
-import com.sun.net.httpserver.HttpsExchange;
+import com.sun.net.httpserver.HttpExchange;
 
 
 /**
@@ -10,11 +10,11 @@ import com.sun.net.httpserver.HttpsExchange;
  */
 public interface ClientIdentifier {
 
-	/**
+    /**
      * Extracts a unique client identifier from the HTTP request.
      *
      * @param exchange the incoming HTTP exchange
      * @return a non-null string identifying the client
      */
-	String identify(HttpsExchange exchange);
+    String identify(HttpExchange exchange);
 }
