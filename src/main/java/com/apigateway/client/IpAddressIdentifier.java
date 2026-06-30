@@ -15,9 +15,18 @@ import com.sun.net.httpserver.HttpExchange;
 public class IpAddressIdentifier implements ClientIdentifier {
 	
 	@Override
-	public String identify(HttpExchange exchange) {
-		// getRemoteAddress() returns InetSocketAddress
-		// getAddress().getHostAddress() gives us just "192.168.1.42"
-		return exchange.getRemoteAddress().getAddress().getHostAddress();
-	}	
+    public String identify(HttpExchange exchange) {
+        try {
+            if (exchange.getRemoteAddress() == null) {
+                return "unknown";
+            }
+            if (exchange.getRemoteAddress().getAddress() == null) {
+                return "unknown";
+            }
+            String ip = exchange.getRemoteAddress().getAddress().getHostAddress();
+            return (ip != null && !ip.isBlank()) ? ip : "unknown";
+        } catch (Exception e) {
+            return "unknown";
+        }
+    }	
 }
